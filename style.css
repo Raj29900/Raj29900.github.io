@@ -588,3 +588,145 @@ section#Contact{
   max-width: 900px;
   margin: 0 auto;
 }
+/* ===== FINAL PROJECTS DROPDOWN (CLICK) ===== */
+
+/* make sure dropdown is not clipped */
+.nav, .nav-links { overflow: visible; }
+
+/* keep navbar above content */
+.nav { z-index: 9998; position: sticky; top: 0; }
+
+/* wrapper */
+.nav-dropdown{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Projects trigger link */
+.nav-parent{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* submenu default hidden handled by [hidden] */
+.nav-submenu[hidden]{
+  display: none !important;
+}
+
+/* submenu box */
+.nav-submenu{
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+
+  min-width: 210px;
+  padding: 10px;
+  border-radius: 16px;
+
+  background: rgba(11, 16, 32, 0.98);
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+
+  z-index: 10001;            /* ✅ above everything */
+  pointer-events: auto;      /* ✅ clickable */
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nav-submenu a{
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.nav-submenu a:hover{
+  background: rgba(255,255,255,0.08);
+}
+
+/* Mobile: submenu should be inside the opened menu */
+@media (max-width: 900px){
+  .nav-dropdown{ width: 100%; }
+  .nav-parent{ width: 100%; justify-content: space-between; }
+
+  .nav-submenu{
+    position: static;
+    margin-top: 8px;
+    min-width: 0;
+    width: 100%;
+    box-shadow: none;
+  }
+}
+
+/* ===== Projects Dropdown (FINAL) ===== */
+.nav, .nav-links { overflow: visible; }
+.nav { z-index: 9998; }
+
+.nav-dropdown{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-parent{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.caret{ font-size: 12px; }
+
+/* hide submenu when [hidden] exists */
+#projectsSub[hidden]{ display: none !important; }
+
+#projectsSub{
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+
+  min-width: 210px;
+  padding: 10px;
+  border-radius: 16px;
+
+  background: rgba(11, 16, 32, 0.98);
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+
+  z-index: 10001;
+}
+
+#projectsSub a{
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#projectsSub a:hover{
+  background: rgba(255,255,255,0.08);
+}
+
+/* Mobile: submenu should stay inside the opened menu */
+@media (max-width: 900px){
+  #projectsSub{
+    position: static;
+    margin-top: 8px;
+    min-width: 0;
+    width: 100%;
+    box-shadow: none;
+  }
+}
+
