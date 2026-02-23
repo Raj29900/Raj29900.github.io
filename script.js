@@ -45,3 +45,36 @@ contactForm.addEventListener('submit', e => {
 
   contactForm.reset();
 });
+
+// Contact form -> open email client with filled content
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+
+contactForm.addEventListener('submit', e => {
+  e.preventDefault();
+
+  const name = contactForm.name.value.trim();
+  const email = contactForm.email.value.trim();
+  const message = contactForm.message.value.trim();
+
+  if (!name || !email || !message) {
+    formStatus.style.color = '#ff8080';
+    formStatus.textContent = 'Please fill in all fields.';
+    return;
+  }
+
+  formStatus.style.color = '#72e3a1';
+  formStatus.textContent = 'Opening your email app…';
+
+  const subject = encodeURIComponent(`Portfolio Contact – ${name}`);
+  const body = encodeURIComponent(
+    `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+  );
+
+  const mailTo = 'kprrahul2018@gmail.com';
+  window.location.href = `mailto:${mailTo}?subject=${subject}&body=${body}`;
+
+  contactForm.reset();
+});
+
+
